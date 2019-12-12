@@ -1,0 +1,25 @@
+.post-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.post-wrapper p, .post-wrapper h4 {
+  margin: 0;
+  padding: 0;
+}
+
+.post-form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+.grey {
+  opacity: 0.5
+}
+/* .grey:hover {
+  opacity: 1
+} */
+textarea {
+  resize: none
+}
