@@ -4,6 +4,9 @@ import './App.css';
 //custom components
 import CreatePost from './components/CreatePost'
 
+//custom fontawesome
+import 'font-awesome/css/font-awesome.min.css';
+
 class App extends Component {
   constructor(props) {
     super(props)
@@ -51,6 +54,12 @@ class App extends Component {
   vote = (e, sentPost, operator) => {
     e.preventDefault();
     const posts = this.state.posts.filter(checkPost => sentPost.title !== checkPost.title);
+    // const posts2 = this.state.posts.map(
+    //   checkPost =>
+    //     if (checkPost.title === sentPost.title)
+    //     checkPost.voteCount++
+    // )
+
     switch (operator) {
       case "plus":
         sentPost.voteCount++
@@ -61,8 +70,12 @@ class App extends Component {
       default:
         console.error("Something occured in vote function - app.js")
     }
+
+    posts.push(sentPost)
+    // posts.sort((a, b) => b.voteCount - a.voteCount);
+
     this.setState({
-      posts: [...posts, sentPost]
+      posts
     })
   }
 
@@ -78,13 +91,17 @@ class App extends Component {
         />
         {this.state.posts.map((post, key) =>
           <div key={key} className={post.voteCount >= 0 ? "post-wrapper" : "post-wrapper grey"}>
-              <div>
+            <div>
                 <h4>{post.title}</h4>
                 <p>{post.content}</p>
-                <p>{post.voteCount}</p>
-              </div>
-            <button onClick={(e) => this.vote(e, post, "plus")}>Vote Up!</button>
-            <button onClick={(e) => this.vote(e, post, "minus")}>Vote Down!</button>
+              <p>{post.voteCount}</p>
+              <i className="fa fa-angle-double-down"
+                onClick={(e) => this.vote(e, post, "minus")}
+              ></i>
+              <i className="fa fa-angle-double-up"
+                onClick={(e) => this.vote(e, post, "plus")}
+              ></i>
+            </div>
           </div>
         )}
       </div>
