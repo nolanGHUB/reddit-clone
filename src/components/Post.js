@@ -16,11 +16,13 @@ class Post extends Component {
       content: "",
       author: "Steve Jobs(From the grave)",
       voteCount: 0,
+      comments: [],
       posts: [{
         title: "this is a post!",
         content: "Post content - Post Content - Post content - Post Content - Post content - Post Content",
         author: "-Somebody",
         voteCount: 0,
+        comments: ["This post sucks", "I agree this post sucks"]
       }],
     }
   }
