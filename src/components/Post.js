@@ -89,10 +89,13 @@ class Post extends Component {
           postSubmit={this.postSubmit}
           onContentChange={this.onContentChange}
         />
-        <PostList
-          posts={this.state.posts}
-          vote={this.vote}
-        />
+        <div className="post">
+          <PostList
+            posts={this.state.posts}
+            vote={this.vote}
+          />
+        </div>
+        
       </div>
     )
   }
