@@ -1,26 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
 
-function App() {
-  return (
+class App extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      content: "",
+      posts: [],
+    }
+  }
+
+  onChange = (e) => {
+    const content = e.target.value;
+    this.setState({
+      content
+    })
+  }
+
+  postSubmit = (e) => {
+    e.preventDefault();
+  }
+
+  render() {
+    return(
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <h1>Reddit</h1>
+        <form onSubmit={this.postSubmit}>
+          <input
+            type="textarea"
+            name="content"
+            placeholder="POST IT"
+            onChange={this.onChange}
+            value={this.state.content}
+          />
+          <input
+            type="submit"
+            value="POST"
+          />
+        </form>
     </div>
   );
+  }
 }
 
 export default App;
